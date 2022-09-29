@@ -60,7 +60,6 @@ export const ENDPOINT_DELETE_ORGANIZATION = `${ENDPOINT_ORGANIZATIONS}/:id`;
 
 // TRIBES ROUTES
 export const ENDPOINT_TRIBES = '/tribes';
-export const ENDPOINT_GET_TRIBE = `${ENDPOINT_TRIBES}/:id`;
 
 // METRICS ROUTES
 export const ENDPOINT_METRICS = '/metrics';
@@ -87,5 +86,7 @@ export const DEF_CODE_ARCHIVED = 'A';
 export const DEF_STATE_ENABLE = 'Habilitado';
 export const DEF_STATE_DISABLE = 'Desabilitado';
 export const DEF_STATE_ARCHIVED = 'Archivado';
+
+export const DEF_NAME_CSV_REPORT = 'metrics_tribe_';
 
 //#endregion DEFAULT VALUES

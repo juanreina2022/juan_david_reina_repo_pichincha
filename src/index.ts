@@ -1,10 +1,10 @@
 // Config
 import app from './app';
 
-// Const
-const port = 3000;
+// Config Vars
+import * as config from '../configVars';
 
-app.listen(port, async () => {
+app.listen(config.PORT, async () => {
   // tslint:disable-next-line: no-console
-  console.log(`App is running in ${port} port.`);
+  console.log(`App is running in ${config.PORT} port in ${config.NODE_ENV} environment.`);
 });

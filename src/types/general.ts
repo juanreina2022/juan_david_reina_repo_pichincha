@@ -25,3 +25,10 @@ interface IMockItem {
   id: number;
   state: number;
 }
+
+interface ITribe {
+  id_tribe: number;
+  id_organization: number;
+  name: string;
+  status: string;
+}

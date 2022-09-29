@@ -7,6 +7,7 @@ import express from 'express';
 import metricsRoutes from '../src/routes/metric.routes';
 import mockRoutes from '../src/routes/mock.routes';
 import organizationRoutes from '../src/routes/organization.routes';
+import tribesRoutes from '../src/routes/tribe.routes';
 
 // DB
 import initdb from './initdb';
@@ -27,6 +28,7 @@ dbManager;
 mockRoutes(app);
 organizationRoutes(app);
 metricsRoutes(app);
+tribesRoutes(app);
 
 /**
    * Listening all uncontrolled endpoints

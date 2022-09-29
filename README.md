@@ -1,25 +1,30 @@
 # PICHINCHA NODE JS
 
-### Steps for run project
-1- Ensure that your are using the correct node version
+### STEPS FOR RUN THE PROJECT
+Ensure that your are using the correct node version
 
 ```bash
 nvm use 16.15.1
 ```
 
-2- Install packages
+Install packages
 
 ```bash
 npm install
 ```
+Set ``env`` vars locally. ***This step is very important for run the server***
 
-3- Run server
+```bash
+. ./src/utils/environment.sh
+```
+
+Run server
 
 ```bash
 npm run start-dev
 ```
 ____
-### Endpoints
+### ENDPOINTS
 **1- Mock Service**
 - Method: <span style="color:green"><b>GET</b></span>.
 - Params: None
@@ -66,16 +71,29 @@ ____
 ```
 /metrics/ID?date=&state=&coverage=
 ```
-**NOTE:** The params date, status and coverage are optional, if you don't send it into the URL, we'll filter with default data. Example:`(date>='2022-01-01', state = 'E', coverage >= '0.75')`.
+**NOTE:** The params date, status and coverage are optional, if you don't send it into the URL, we'll filter with default data. Example:`(date>='2022-01-01', state = 'E', coverage >= '0.75')`. If you want, you can consume the following additional endpoint, in order to get the existing tribes:
+```
+/tribes
+```
+
+**3.1- Download CSV report with Metrics by Tribu ID**
+Using the same endpoint above for get the metrics, we can download the report, just adding one param called ``report`` with value ``true``
+
+```
+/metrics/ID?report=true
+```
 ____
-### Tech Table
+### DATABASE INFORMATION
+As requested in the exercise, the cocroachlabs page was used for the database. The main info for connection was placed into the ``environment.sh`` file in the next route `/src/utils`. 
+___
+### TECH TABLE
 
 | Technology | Versión |
 | ---------- | ------- |
 | Node js    | 16.15.1 |
 | Typescript | 4.7.4   |
 ___
-### Dependencies
+### DEPENDENCIES
 
 | Module             | Description                                                  |
 | ------------------ | :----------------------------------------------------------- |

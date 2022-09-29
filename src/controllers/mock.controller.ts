@@ -1,5 +1,4 @@
 // Libraries
-import to from 'await-to-js';
 import { RequestHandler } from 'express';
 
 /**

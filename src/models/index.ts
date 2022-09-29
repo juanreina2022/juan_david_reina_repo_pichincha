@@ -12,9 +12,9 @@ import tribe from './tribe.model';
 
 export const init = async () => {
   return new Promise(async (resolve, reject) => {
-    // const db_password = config.PPUP1_DB_PASSWORD;
+    const connString = `postgresql://${config.PPUP1_DB_USER}:${config.PPUP1_DB_PASSWORD}@${config.PPUP1_DB_HOST}:${config.PPUP1_DB_PORT}/${config.PPUP1_DB_NAME}?sslmode=verify-full&options=--cluster%3Dkeen-wisp-5309`;
 
-    const sequelize = new Sequelize('postgresql://juan:nA72-erpcO4H76Uc9jHMLg@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dkeen-wisp-5309', {
+    const sequelize = new Sequelize(connString, {
       define: {
         timestamps: false, // This flag is sent to avoid an error, because in the DB tables, there is no field called 'createdAt'.
       },

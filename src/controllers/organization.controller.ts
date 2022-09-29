@@ -171,7 +171,7 @@ export const putOrganization: RequestHandler = async (req, res) => {
     status,
   };
 
-  const [error, result] = await to<IOrganization>(dbManager.organization.update(dataToUpdate, whereFindOne));
+  const [error] = await to<IOrganization>(dbManager.organization.update(dataToUpdate, whereFindOne));
 
   if (error) {
     if (error.name === 'SequelizeUniqueConstraintError') {

@@ -7,6 +7,7 @@ import { QueryTypes } from 'sequelize';
 import { isValidId, isValidState, transformStatusAndState } from '../utils/commonFuncitons';
 import {
   DEF_METRIC_COVERAGE,
+  DEF_NAME_CSV_REPORT,
   DEF_REPOSITORY_DATE,
   DEF_REPOSITORY_STATE,
   ERR_DATA_FOR_GET_METRICS_BY_TRIBE,
@@ -30,6 +31,7 @@ export const getMetrics: RequestHandler = async (req, res) => {
   const date = req.query.date ? req.query.date : DEF_REPOSITORY_DATE;
   const state = req.query.state ? String(req.query.state).toUpperCase() : DEF_REPOSITORY_STATE;
   const coverage = req.query.coverage ? req.query.coverage : null;
+  const exportData = req.query.report ? req.query.report : null;
 
   // Validate if arrive the tribe ID
   if (!tribeId || tribeId.length <= 0) {
@@ -104,10 +106,65 @@ export const getMetrics: RequestHandler = async (req, res) => {
   // Getting the state verification and transform it and the status
   const transformedData = await transformStatusAndState(result);
 
+  if (exportData) {
+    // this statement tells the browser what type of data is supposed to download and force it to download
+    res.writeHead(200, {
+      'Content-Disposition': `attachment; filename=${DEF_NAME_CSV_REPORT}${tribeId}.csv`,
+      'Content-Type': 'text/csv',
+    });
+    // whereas this part is in charge of telling what data should be parsed and be downloaded
+    return res.end(await exportReportCsv(transformedData), 'binary');
+  }
+
   return res.json({
     message: INFO_FIND_METRICS,
     transformedData,
     // tslint:disable-next-line: object-literal-sort-keys
     success: true,
   });
+};
+
+/**
+ * Function for build the report from the DB data
+ * @param dataList The data for export to CSV file
+ * @returns An CSV document for download
+ */
+export const exportReportCsv = async (dataList: IMetricResult[]) => {
+  const reportAsObject = [];
+  const headers = Object.keys(dataList);
+
+  // Pushing the headers, as the first rows in the 2-dimensional array 'allObjects' would be the first row
+  reportAsObject.push(headers);
+
+  // Now iterating through the list and build up an array that contains the data of every object in the list, in the same order of the headers
+  dataList.forEach((repo) => {
+    const rows = [];
+    rows.push(repo.id);
+    rows.push(repo.name);
+    rows.push(repo.tribe);
+    rows.push(repo.organization);
+    rows.push(repo.coverage);
+    rows.push(repo.codaSmells);
+    rows.push(repo.bugs);
+    rows.push(repo.vulnerabilities);
+    rows.push(repo.hotspots);
+    rows.push(repo.verificationState);
+    rows.push(repo.state);
+
+    // Adding the array as additional element to the 2-dimensional array. It will evantually be converted to a single row
+    reportAsObject.push(rows);
+  });
+
+  // Initializing the output in a new variable 'csvContent'
+  let csvContent = '';
+
+  // The code below takes two-dimensional array and converts it to be strctured as CSV
+  // *** It can be taken apart from the function, if all you need is to convert an array to CSV
+  reportAsObject.forEach((infoArray, index) => {
+    const dataString = infoArray.join(',');
+    csvContent += index < reportAsObject.length ? dataString + '\n' : dataString;
+  });
+
+  // Returning the CSV output
+  return csvContent;
 };
