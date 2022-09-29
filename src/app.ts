@@ -4,9 +4,9 @@ import compression from 'compression';
 import express from 'express';
 
 // Routes
+import metricsRoutes from '../src/routes/metric.routes';
 import mockRoutes from '../src/routes/mock.routes';
 import organizationRoutes from '../src/routes/organization.routes';
-import tribeRoutes from '../src/routes/tribe.routes';
 
 // DB
 import initdb from './initdb';
@@ -26,7 +26,7 @@ dbManager;
 // Routes
 mockRoutes(app);
 organizationRoutes(app);
-tribeRoutes(app);
+metricsRoutes(app);
 
 /**
    * Listening all uncontrolled endpoints

@@ -14,7 +14,7 @@ export const init = async () => {
   return new Promise(async (resolve, reject) => {
     // const db_password = config.PPUP1_DB_PASSWORD;
 
-    const sequelize = new Sequelize('postgresql://juan:Ddxmq4dmNyvEw-FUHxcLBQ@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dpichincha-nodejs-3752', {
+    const sequelize = new Sequelize('postgresql://juan:nA72-erpcO4H76Uc9jHMLg@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dkeen-wisp-5309', {
       define: {
         timestamps: false, // This flag is sent to avoid an error, because in the DB tables, there is no field called 'createdAt'.
       },
@@ -50,8 +50,8 @@ export const init = async () => {
     db.repository.belongsTo(db.tribe, { foreignKey: 'id_tribe' });
 
     // Metrics relationship
-    db.metric.hasOne(db.repository, { foreignKey: 'id_repository' });
-    db.repository.belongsTo(db.metric, { foreignKey: 'id_repository' });
+    db.repository.hasOne(db.metric, { foreignKey: 'id_repository' });
+    db.metric.belongsTo(db.repository, { foreignKey: 'id_repository' });
 
     return resolve(db);
   });

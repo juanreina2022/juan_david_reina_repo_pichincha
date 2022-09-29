@@ -1,16 +1,72 @@
 # PICHINCHA NODE JS
 
-Ensure that your are using the correct node version
+### Steps for run project
+1- Ensure that your are using the correct node version
 
 ```bash
 nvm use 16.15.1
 ```
 
-Install packages
+2- Install packages
 
 ```bash
 npm install
 ```
+
+3- Run server
+
+```bash
+npm run start-dev
+```
+____
+### Endpoints
+**1- Mock Service**
+- Method: <span style="color:green"><b>GET</b></span>.
+- Params: None
+```
+/mockservice
+```
+
+**2- Organizations**
+- ***Get All Organizations***
+- Method: <span style="color:green"><b>GET</b></span>.
+- Params: None
+```
+/organizations
+```
+- ***Get One Organization***
+- Method: <span style="color:green"><b>GET</b></span>.
+- Params: ID of the organization
+```
+/organizations/ID
+```
+- ***Post Organizations***
+- Method: <span style="color:orange"><b>POST</b></span>.
+- Params: In the body must send *name* and *state* for the new organization
+```
+/organizations
+```
+- ***Put One Organization***
+- Method: <span style="color:blue"><b>PUT</b></span>.
+- Params: In the body must set *name* and *state* for the organization
+```
+/organizations
+```
+- ***Delete One Organization***
+- Method: <span style="color:red"><b>DELETE</b></span>.
+- Params: ID of the organization
+
+```
+/organizations
+```
+**3- Get Repositories Metrics by Tribu ID**
+- ***Get All Organizations***
+- Method: <span style="color:green"><b>GET</b></span>.
+- Params: None
+```
+/metrics/ID?date=&state=&coverage=
+```
+IMPORTANT:
 ____
 ### Tech Table
 
@@ -18,7 +74,7 @@ ____
 | ---------- | ------- |
 | Node js    | 16.15.1 |
 | Typescript | 4.7.4   |
-
+___
 ### Dependencies
 
 | Module             | Description                                                  |

@@ -17,6 +17,8 @@ export const INFO_FIND_ONE_TRIBE = 'The tribe was found succesfully!';
 export const INFO_STORE_TRIBE = 'The tribe was stored succesfully!';
 export const INFO_UPDATE_TRIBE = 'The tribe was updated succesfully!';
 export const INFO_DELETE_TRIBE = 'The tribe was deleted succesfully!';
+export const INFO_FIND_0_METRICS = 'There are not metrics with this search criteria.';
+export const INFO_FIND_METRICS = 'Metrics was found succesfully!';
 
 // ERROR MESSAGES
 export const ERR_GETTING_ALL_ORGANIZATIONS = 'Error trying to get all organizations: ';
@@ -35,6 +37,10 @@ export const ERR_DATA_FOR_STORE_TRIBE = 'The "name" and "status" fields are requ
 export const ERR_DATA_FOR_UPDATE_TRIBE = 'The "name" and "status" fields are required to update an Tribe';
 export const ERR_STORE_TRIBES = 'An error occurred while trying to store the tribe in the DB';
 export const ERR_STORE_TRIBES_DUPLICATE = 'This tribe already exist into DB. The tribe name must be unique.';
+export const ERR_DATA_FOR_GET_METRICS_BY_TRIBE = 'The ID of tribe is required.';
+export const ERR_WRONG_TYPE_ID = 'Wrong ID format! The ID of tribe must be an unique number with 18 digits, like this -> "000000000000000000"';
+export const ERR_WRONG_REPO_STATE = 'Bad status for the repository, valid codes for a repository status are E, D or A!';
+export const ERR_GETTING_METRICS_DATA = 'Error trying to get the metrics data: ';
 
 // WARNING MESSAGES
 export const WAR_REQUEST_RECEIVED_PAGE_404 = 'Did you write the URL request correctly? Page not found!';
@@ -55,22 +61,31 @@ export const ENDPOINT_DELETE_ORGANIZATION = `${ENDPOINT_ORGANIZATIONS}/:id`;
 // TRIBES ROUTES
 export const ENDPOINT_TRIBES = '/tribes';
 export const ENDPOINT_GET_TRIBE = `${ENDPOINT_TRIBES}/:id`;
-export const ENDPOINT_GET_TRIBES = `${ENDPOINT_TRIBES}`;
-export const ENDPOINT_POST_TRIBE = `${ENDPOINT_TRIBES}`;
-export const ENDPOINT_PUT_TRIBE = `${ENDPOINT_TRIBES}/:id`;
-export const ENDPOINT_DELETE_TRIBE = `${ENDPOINT_TRIBES}/:id`;
-
-// REPOSITORY ROUTES
-export const ENDPOINT_GET_REPOSITORY = '/repository';
-export const ENDPOINT_GET_REPOSITORIES = '/repositories';
-export const ENDPOINT_POST_REPOSITORY = '/create_repository';
-export const ENDPOINT_PUT_REPOSITORY = '/update_repository';
-export const ENDPOINT_DELETE_REPOSITORY = '/delete_repository';
 
 // METRICS ROUTES
-export const ENDPOINT_GET_METRICS = '/metric';
-export const ENDPOINT_GET_METRICSS = '/metrics';
-export const ENDPOINT_POST_METRICS = '/create_metric';
-export const ENDPOINT_PUT_METRICS = '/update_metric';
-export const ENDPOINT_DELETE_METRICS = '/delete_metric';
+export const ENDPOINT_METRICS = '/metrics';
+export const ENDPOINT_GET_METRICS = `${ENDPOINT_METRICS}/:id`;
 //#endregion ROUTES
+
+//#region DEFAULT VALUES
+export const DEF_REPOSITORY_DATE = `2022-01-01`;
+export const DEF_REPOSITORY_STATE = 'E';
+export const DEF_METRIC_COVERAGE = 0.75;
+
+// Code Verification
+export const DEF_CODE_VERIFIED = 604;
+export const DEF_CODE_AWAIT = 605;
+export const DEF_CODE_APPROVED = 606;
+export const DEF_VERIFIED = 'Verificado';
+export const DEF_AWAIT = 'En espera';
+export const DEF_APPROVED = 'Aprobado';
+
+// Repositories state
+export const DEF_CODE_ENABLE = 'E';
+export const DEF_CODE_DISABLE = 'D';
+export const DEF_CODE_ARCHIVED = 'A';
+export const DEF_STATE_ENABLE = 'Habilitado';
+export const DEF_STATE_DISABLE = 'Desabilitado';
+export const DEF_STATE_ARCHIVED = 'Archivado';
+
+//#endregion DEFAULT VALUES

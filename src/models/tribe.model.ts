@@ -22,7 +22,7 @@ export default (sequelize: Sequelize) => {
     // tslint:disable-next-line: object-literal-sort-keys
     id_organization: {
       allowNull: false,
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: DataTypes.INTEGER,
     },
     name: {
       allowNull: false,

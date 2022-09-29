@@ -8,25 +8,16 @@ interface IOrganization {
   status: number;
 }
 
-interface ITribe {
-  id_organization: number;
+interface IMetricResult {
+  id: number;
   name: string;
-  status: number;
-}
-
-interface IRepository {
-  create_time: string;
-  id_tribe: number;
-  name: string;
-  state: string;
-  status: string;
-}
-
-interface IMetric {
+  tribe: string;
+  organization: string;
+  coverage: string;
+  codaSmells: number;
   bugs: number;
-  code_smells: number;
-  coverage: number;
-  hotspot: number;
-  id_repository: number;
   vulnerabilities: number;
+  hotspots: number;
+  verificationState: string;
+  state: string;
 }
