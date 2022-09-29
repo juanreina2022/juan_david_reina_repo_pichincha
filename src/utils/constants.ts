@@ -17,7 +17,7 @@ export const INFO_FIND_ONE_TRIBE = 'The tribe was found succesfully!';
 export const INFO_STORE_TRIBE = 'The tribe was stored succesfully!';
 export const INFO_UPDATE_TRIBE = 'The tribe was updated succesfully!';
 export const INFO_DELETE_TRIBE = 'The tribe was deleted succesfully!';
-export const INFO_FIND_0_METRICS = 'There are not metrics with this search criteria.';
+export const INFO_FIND_0_METRICS = 'The Tribe is not registered.';
 export const INFO_FIND_METRICS = 'Metrics was found succesfully!';
 
 // ERROR MESSAGES

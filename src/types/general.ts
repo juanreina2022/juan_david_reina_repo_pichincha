@@ -21,3 +21,7 @@ interface IMetricResult {
   verificationState: string;
   state: string;
 }
+interface IMockItem {
+  id: number;
+  state: number;
+}

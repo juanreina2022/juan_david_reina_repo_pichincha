@@ -62,11 +62,11 @@ ____
 **3- Get Repositories Metrics by Tribu ID**
 - ***Get All Organizations***
 - Method: <span style="color:green"><b>GET</b></span>.
-- Params: None
+- Params: ***ID*** of the Tribe, ***date*** of repository creation, ***state*** of the repository and ***coverage*** metric
 ```
 /metrics/ID?date=&state=&coverage=
 ```
-IMPORTANT:
+**NOTE:** The params date, status and coverage are optional, if you don't send it into the URL, we'll filter with default data. Example:`(date>='2022-01-01', state = 'E', coverage >= '0.75')`.
 ____
 ### Tech Table
 

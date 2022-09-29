@@ -8,22 +8,22 @@ import { RequestHandler } from 'express';
  * @param res The response object from express
  */
 export const getMockService: RequestHandler = async (req, res) => {
-  const mock = {
-    repositories: [
-      {
-        id: 1,
-        state: 604,
-      },
-      {
-        id: 2,
-        state: 605,
-      },
-      {
-        id: 3,
-        state: 606,
-      },
-    ],
-  };
-
-  return res.json(mock);
+  return res.json({
+    repositories: mockData,
+  });
 };
+
+export const mockData: IMockItem[] = [
+  {
+    id: 1,
+    state: 604,
+  },
+  {
+    id: 2,
+    state: 605,
+  },
+  {
+    id: 3,
+    state: 606,
+  },
+];
